@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @if(!$postNews->isEmpty())
+            @if (!$postNews->isEmpty())
                 @foreach ($postNews as $key => $i)
                     <tr>
                         <th scope="row">
@@ -36,23 +36,21 @@
                             <div class="d-inline-block text-truncate" style="max-width: 110px;">
                                 {{ $i->detail }}
                             </div>
-                            @if (mb_strlen( $i->detail, 'UTF-8') > 10)
-                                <button
-                                    style="font-size: 2vh;"
-                                    class="btn text-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#readMoreId{{ $i->id }}"
-                                >
+                            @if (mb_strlen($i->detail, 'UTF-8') > 10)
+                                <button style="font-size: 2vh;" class="btn text-danger" data-bs-toggle="modal"
+                                    data-bs-target="#readMoreId{{ $i->id }}">
                                     อ่านเพิ่มเติม
                                 </button>
-                                <div class="modal fade" id="readMoreId{{ $i->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="readMoreId{{ $i->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                                                     อ่านเพิ่มเติม
                                                 </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="text-wrap text-break lh-base fs-4 mx-3">
@@ -60,7 +58,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-center mb-3 mt-2">
-                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">
+                                                <button type="button" class="btn btn-secondary btn-lg"
+                                                    data-bs-dismiss="modal">
                                                     ปิดหน้าต่าง
                                                 </button>
                                             </div>
@@ -70,40 +69,33 @@
                             @endif
                         </td>
                         <td>
-                            <button
-                                class="btn btn-info btn-sm"
-                                onclick="Swal.fire({ imageUrl: '{{ asset($i->image) }}', confirmButtonText: 'ปิดหน้าต่าง' })"
-                            >
+                            <button class="btn btn-info btn-sm"
+                                onclick="Swal.fire({ imageUrl: '{{ asset($i->image) }}', confirmButtonText: 'ปิดหน้าต่าง' })">
                                 ดูรูปภาพ
                             </button>
                         </td>
                         <td>
-                            <button
-                                class="btn btn-warning btn-sm"
-                                data-bs-toggle="modal"
-                                data-bs-target="#newsEdit"
-                                wire:click="edit('{{ $i->id }}')"
-                            >
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#newsEdit"
+                                wire:click="edit('{{ $i->id }}')">
                                 แก้ไข
                             </button>
 
                             {{-- Confrim Delete --}}
-                            <button
-                                class="btn btn-danger btn-sm"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confrimDeleteId{{ $i->id }}"
-                            >
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#confrimDeleteId{{ $i->id }}">
                                 ลบ
                             </button>
 
-                            <div class="modal fade" id="confrimDeleteId{{ $i->id }}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+                            <div class="modal fade" id="confrimDeleteId{{ $i->id }}" data-bs-backdrop="static"
+                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">
                                                 ยืนยันการลบ
                                             </h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             ยืนยันการลบ หัวข้อ {{ $i->name }}
@@ -112,11 +104,8 @@
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                 ยกเลิก
                                             </button>
-                                            <button
-                                                type="button"
-                                                class="btn btn-danger"
-                                                wire:click="delete('{{ $i->id }}', 'confrimDeleteId{{ $i->id }}')"
-                                            >
+                                            <button type="button" class="btn btn-danger"
+                                                wire:click="delete('{{ $i->id }}', 'confrimDeleteId{{ $i->id }}')">
                                                 ยืนยันการลบ
                                             </button>
                                         </div>

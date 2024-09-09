@@ -7,7 +7,7 @@
     @include('livewire.admin.about.data')
 
     {{-- Paginate Page --}}
-    @if(!$staff->isEmpty())
+    @if (!$staff->isEmpty())
         <div class="mt-3">
             {!! $staff->links() !!}
         </div>

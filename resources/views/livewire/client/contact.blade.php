@@ -3,13 +3,7 @@
         <div class="row g-3">
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        placeholder="Your Name"
-                        wire:model="name"
-                    />
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" wire:model="name" />
                     <label for="name">ชื่อ-นามสกุล</label>
                 </div>
                 @error('name')
@@ -20,13 +14,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Your Email"
-                        wire:model="email"
-                    />
+                    <input type="email" class="form-control" id="email" placeholder="Your Email"
+                        wire:model="email" />
                     <label for="email">อีเมลของคุณ</label>
                 </div>
                 @error('email')
@@ -37,13 +26,7 @@
             </div>
             <div class="col-12">
                 <div class="form-floating">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="title"
-                        placeholder="title"
-                        wire:model="title"
-                    />
+                    <input type="text" class="form-control" id="title" placeholder="title" wire:model="title" />
                     <label for="title">หัวข้อ</label>
                 </div>
                 @error('title')
@@ -55,13 +38,8 @@
 
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="ContactInfo"
-                        placeholder="Contact Information"
-                        wire:model="contactInfo"
-                    />
+                    <input type="text" class="form-control" id="ContactInfo" placeholder="Contact Information"
+                        wire:model="contactInfo" />
                     <label for="message">ช่องทางการติดต่อกลับ</label>
                 </div>
                 @error('contactInfo')
@@ -73,11 +51,7 @@
 
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input
-                        type="file"
-                        class="form-control"
-                        wire:model="attachFile"
-                    />
+                    <input type="file" class="form-control" wire:model="attachFile" />
                     <label for="message">
                         แนบไฟล์
                     </label>
@@ -91,13 +65,8 @@
 
             <div class="col-12">
                 <div class="form-floating">
-                    <textarea
-                        class="form-control"
-                        placeholder="Leave a message here"
-                        id="detail"
-                        style="height: 150px"
-                        wire:model="detail"
-                    ></textarea>
+                    <textarea class="form-control" placeholder="Leave a message here" id="detail" style="height: 150px"
+                        wire:model="detail"></textarea>
                     <label for="message">รายละเอียด</label>
                 </div>
                 @error('detail')

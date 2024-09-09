@@ -38,6 +38,12 @@ Route::prefix('system')->name('admin.')->middleware(['auth'])->group(function ()
     // NEWS
     Route::get('news', [PageController::class, 'news'])->name('news');
 
+     // Contact
+    Route::get('contact', [PageController::class, 'contact'])->name('contact');
+
+    // Activity
+    Route::get('activity', [PageController::class, 'activity'])->name('activity');
+
     // Staff
     Route::get('about', [PageController::class, 'about'])->name('about');
 

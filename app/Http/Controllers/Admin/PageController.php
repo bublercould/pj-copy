@@ -28,4 +28,14 @@ class PageController extends Controller
         return view('pages.admin.users');
     }
 
+    public function contact()
+    {
+        return view('pages.admin.contact');
+    }
+
+    public function activity()
+    {
+        return view('pages.admin.activity');
+    }
+
 }
