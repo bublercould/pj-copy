@@ -29,7 +29,7 @@
                             รายละเอียด
                         </label>
                         <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : null }}" wire:model="description"
-                            placeholder="Description"></textarea>
+                            placeholder="description"></textarea>
                         @error('description')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -39,9 +39,9 @@
                         <label for="description" class="form-label">
                             รูปภาพ
                         </label>
-                        <input type="file" class="form-control {{ $errors->has('image_url') ? 'is-invalid' : null }}"
-                            wire:model="image_url" />
-                        @error('image_url')
+                        <input type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : null }}"
+                            wire:model="image" />
+                        @error('image')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>

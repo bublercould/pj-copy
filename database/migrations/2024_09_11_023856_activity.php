@@ -9,26 +9,25 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-  public function up()
+    public function up(): void
     {
         Schema::create('activity', function (Blueprint $table) {
-            $table->id();                     
-            $table->unsignedBigInteger('activity_id'); 
-            $table->string('image_url');       
+
+           Schema::create('activity', function (Blueprint $table) {
+            $table->id();                      
+            $table->string('image');       
             $table->text('description')->nullable();  
             $table->timestamps();               
             $table->softDeletes();              
+        });
 
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('activity');
     }

@@ -7,9 +7,6 @@
                     ลำดับ
                 </th>
                 <th scope="col">
-                    รหัสรูป
-                </th>
-                <th scope="col">
                     รายละเอียด
                 </th>
                 <th scope="col">
@@ -27,11 +24,6 @@
                         <th scope="row">
                             {{ $activities->total() - ($activities->firstItem() + $key) + 1 }}
                         </th>
-                        <td>
-                            <div class="d-inline-block text-truncate" style="max-width: 150px;">
-                                {{ $i->activity_id }}
-                            </div>
-                        </td>
                         <td>
                             <div class="d-inline-block text-truncate" style="max-width: 110px;">
                                 {{ $i->description }}
