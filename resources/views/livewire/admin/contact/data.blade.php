@@ -7,7 +7,6 @@
                 <th scope="col">Email</th>
                 <th scope="col">รายละเอียด</th>
                 <th scope="col">ติดต่อกลับ</th>
-                <th scope="col">ไฟล์</th>
                 <th scope="col">จัดการ</th>
             </tr>
         </thead>
@@ -62,15 +61,6 @@
                             <div class="d-inline-block text-truncate" style="max-width: 150px;">
                                 {{ $i->contact_info }}
                             </div>
-                        </td>
-                        <td>
-                            @if ($i->attach_file)
-                                <a href="{{ asset('storage/' . $i->attach_file) }}" target="_blank">
-                                    ดูไฟล์
-                                </a>
-                            @else
-                                ไม่มีไฟล์แนบ
-                            @endif
                         </td>
                         <td>
                             {{-- Confrim Delete --}}

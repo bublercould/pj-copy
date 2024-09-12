@@ -149,3 +149,6 @@ class Activity extends Component
         return view('livewire.admin.activity', ['activities' => $data]);
     }
 }
+
+
+
