@@ -36,7 +36,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="ContactInfo" placeholder="Contact Information"
                         wire:model="contactInfo" />
@@ -49,19 +49,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input type="file" class="form-control" wire:model="attachFile" />
-                    <label for="message">
-                        แนบไฟล์
-                    </label>
-                </div>
-                @error('attachFile')
-                    <span class="mt-0 mb-0 text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
-            </div>
+
 
             <div class="col-12">
                 <div class="form-floating">
