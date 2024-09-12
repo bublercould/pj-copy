@@ -79,7 +79,7 @@ class Activity extends Component
                 $activity = PostActivity::find($id);
                 if ($activity) {
                     $this->fill([
-                        'activityId' => $activity->id, // ปรับให้ตรงกับ activity_id
+                        'activityId' => $activity->id,
                         'image' => $activity->image,
                         'description' => $activity->description
                     ]);

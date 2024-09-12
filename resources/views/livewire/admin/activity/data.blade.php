@@ -62,7 +62,7 @@
                         </td>
                         <td>
                             <button class="btn btn-info btn-sm"
-                                onclick="Swal.fire({ imageUrl: '{{ asset($i->image_url) }}', confirmButtonText: 'ปิดหน้าต่าง' })">
+                                onclick="Swal.fire({ imageUrl: '{{ asset($i->image) }}', confirmButtonText: 'ปิดหน้าต่าง' })">
                                 ดูรูปภาพ
                             </button>
                         </td>
