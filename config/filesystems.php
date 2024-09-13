@@ -73,6 +73,7 @@ return [
         // public_path('storage') => storage_path('app/public'),
         public_path('news') => storage_path('app/news'),
         public_path('staff') => storage_path('app/staff'),
+        public_path('activities') => storage_path('app/activities'),
         public_path('livewire-tmp') => storage_path('app/livewire-tmp'),
     ],
 

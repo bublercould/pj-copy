@@ -1,4 +1,4 @@
-{{-- <x-guest-layout>
+<x-guest-layout>
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -16,8 +16,16 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('อีเมล์')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" autofocus
-                autocomplete="username" placeholder="abc@example.com" />
+            <x-text-input
+                class="block mt-1 w-full"
+                id="email"
+                type="text"
+                name="email"
+                :value="old('email')"
+                autofocus
+                autocomplete="username"
+                placeholder="your@example.com"
+            />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -41,6 +49,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     href="{{ route('password.request') }}">
@@ -48,13 +57,17 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
-                {{ __('เข้าสู่ระบบ') }}
-            </x-primary-button>
+            <div class="grid justify-items-center">
+                <x-primary-button class="ms-3">
+                    {{ __('เข้าสู่ระบบ') }}
+                </x-primary-button>
+            </div>
+
         </div>
     </form>
-</x-guest-layout> --}}
-<section class="bg-gray-50 dark:bg-gray-900">
+</x-guest-layout>
+
+{{-- <section class="bg-gray-50 dark:bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <img class="w-15 h-15 mr-2" src="{{ asset('template\client-template\img\logo.png') }}" alt="logo">
@@ -101,10 +114,15 @@
                                 password?</a>
                         @endif
                     </div>
-                    <button type="submit" class="">Login</button>
+                    <button
+                        type="submit"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    >
+                        เข้าสู่ระบบ
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script> --}}

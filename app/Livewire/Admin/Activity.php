@@ -11,16 +11,20 @@ use App\Models\Activity as PostActivity;
 
 class Activity extends Component
 {
+
     use WithPagination, WithFileUploads, WithoutUrlPagination, LivewireAlert;
 
     public $search = "";
-    public $activityId, $image, $description;
+
+    public $activityId;
+    public $image;
+    public $description;
 
     protected $rules = [
         'image' => 'nullable|image|max:10240',
-        'description' => 'required|string|max:255', 
+        'description' => 'required|string|max:255',
     ];
-    
+
     protected $messages = [
         'description.required' => 'โปรดกรอกรายละเอียดกิจกรรม',
         'image.image' => 'กรุณาอัปโหลดไฟล์รูปภาพเท่านั้น',
@@ -29,47 +33,56 @@ class Activity extends Component
 
     public function submit()
     {
-        try {
-            $this->validate();
 
-            $image_path = null;
-            if ($this->image) {
-                $image_path = $this->image->store('activities', 'public');
-            }
 
-            $activity = PostActivity::create([
-                'image' => $image_path,  
-                'description' => $this->description,
-            ]);
+        $this->validate();
 
-            $this->message('success', 'เพิ่มข้อมูลกิจกรรมสำเร็จ');
-        } catch (\Exception $e) {
-            $this->message('error', 'เพิ่มข้อมูลกิจกรรมไม่สำเร็จ: ' . $e->getMessage());
-        } finally {
-            $this->dispatch('closeModal', 'addActivity');
-            $this->clear();
+        $image_path = null;
+
+        if ($this->image)
+        {
+            $image_path = $this->image->store('activities');
         }
+
+        $activity = PostActivity::create([
+            'image' => $image_path,
+            'description' => $this->description,
+        ]);
+
+        if(!empty($activity->id))
+        {
+            $this->message('success', 'เพิ่มข้อมูลกิจกรรมสำเร็จ');
+        }else{
+            $this->message('error', 'เพิ่มข้อมูลกิจกรรมไม่สำเร็จ');
+        }
+
+        $this->dispatch('closeModal', id:'addActivity');
+        $this->clear();
+
     }
 
     public function delete($id = null, $modalId = null)
     {
-        try {
-            if ($id) {
-                $activity = PostActivity::find($id);
-                if ($activity) {
-                    $activity->delete();
-                    $this->message('success', 'ลบข้อมูลกิจกรรมสำเร็จ');
-                } else {
-                    $this->message('error', 'ไม่มีข้อมูลชุดนี้ หรือ ถูกลบออกแล้ว');
-                }
+
+        if ($id)
+        {
+
+            $activity = PostActivity::find($id);
+
+            if (!empty($activity->id))
+            {
+                $activity->delete();
+                $this->message('success', 'ลบข้อมูลกิจกรรมสำเร็จ');
             } else {
-                $this->message('error', 'ไม่สามารถลบได้ โปรดลองใหม่อีกครั้ง');
+                $this->message('error', 'ไม่มีข้อมูลชุดนี้ หรือ ถูกลบออกแล้ว');
             }
-        } catch (\Exception $e) {
-            $this->message('error', 'ไม่สามารถลบข้อมูลกิจกรรมได้: ' . $e->getMessage());
-        } finally {
-            $this->dispatch('closeModal', $modalId);
+
+        } else {
+            $this->message('error', 'ไม่สามารถลบได้ โปรดลองใหม่อีกครั้ง');
         }
+
+        $this->dispatch('closeModal', id:$modalId);
+
     }
 
     public function edit($id = null)
@@ -95,32 +108,40 @@ class Activity extends Component
         }
     }
 
-    
     public function update()
     {
         try {
+
             $this->validate();
 
             $activity = PostActivity::find($this->activityId);
-            if ($activity) {
-                $image_path = $activity->image;  
-                if ($this->image) {
-                    $image_path = $this->image->store('activities', 'public');
+
+            if ($activity)
+            {
+
+                $image_path = $activity->image;
+
+                if ($this->image)
+                {
+                    $image_path = $this->image->store('activities');
                 }
 
                 $activity->update([
                     'image' => $image_path,
                     'description' => $this->description,
                 ]);
+
                 $this->message('success', 'แก้ไขข้อมูลกิจกรรมสำเร็จ');
+
             } else {
                 $this->message('error', 'แก้ไขข้อมูลกิจกรรมไม่สำเร็จ');
             }
+
         } catch (\Exception $e) {
             $this->message('error', 'แก้ไขข้อมูลกิจกรรมไม่สำเร็จ: ' . $e->getMessage());
         } finally {
             $this->clear();
-            $this->dispatch('closeModal', 'activityEdit');
+            $this->dispatch('closeModal', id:'activityEdit');
         }
     }
 
